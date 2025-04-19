@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Management Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .organisation {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .organisation h2 {
+            cursor: pointer;
+            background-color: #a46a92;
+            color: white;
+            padding: 15px;
+            margin: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .organisation h2:hover {
+            background-color: #e5a2cb;
+        }
+
+        .details {
+            padding: 15px;
+            background-color: #fff;
+            display: none;
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .details.show {
+            display: block;
+            max-height: 500px; /* Adjust as necessary */
+        }
+
+        .details h3 {
+            margin-top: 0;
+            color: #2C3E50;
+        }
+
+        button {
+            background-color: #502745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #bd5e5eB9;
+        }
+
+        #booking-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        #booking-form h2 {
+            margin-top: 0;
+            color: #2C3E50;
+        }
+
+        #booking-form label {
+            display: block;
+            margin-top: 10px;
+            color: #2C3E50;
+        }
+
+        #booking-form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #selected-services {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #selected-services li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #total-cost {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wedding Management Services</h1>
+        
+        <!-- Organisation 1 -->
+        <div class="organisation">
+            <h2 onclick="toggleDetails('org1-details')">Happily Ever After Planner</h2>
+            <div id="org1-details" class="details">
+                <h3>Catering Service</h3>
+                <p>Cost: $1000</p>
+                <h3>Wedding Halls Rental</h3>
+                <p>Cost: $3000</p>
+                <p>Location: Perambur</p>
+                <h3>Photography</h3>
+                <p>Cost: $1500</p>
+                <h3>Musical and Dance Shows</h3>
+                <p>Cost: $2000</p>
+                <button onclick="selectService('Happily Ever After Planner', 'Catering', 1000)">Book Catering</button>
+                <button onclick="selectService('Happily Ever After Planner', 'Wedding Halls Rental', 3000)">Book Wedding Hall</button>
+                <button onclick="selectService('Happily Ever After Planner', 'Photography', 1500)">Book Photography</button>
+                <button onclick="selectService('Happily Ever After Planner', 'Musical and Dance Shows', 2000)">Book Musical and Dance Shows</button>
+            </div>
+        </div>
+        
+        <!-- Organisation 2 -->
+        <div class="organisation">
+            <h2 onclick="toggleDetails('org2-details')">Joyous Journeys</h2>
+            <div id="org2-details" class="details">
+                <h3>Catering Service</h3>
+                <p>Cost: $1700</p>
+                <h3>Wedding Halls Rental</h3>
+                <p>Cost: $2500</p>
+                <p>Location: Ponneri</p>
+                <h3>Photography</h3>
+                <p>Cost: $1600</p>
+                <h3>Musical and Dance Shows</h3>
+                <p>Cost: $2300</p>
+                <button onclick="selectService('Joyous Journeys', 'Catering', 1700)">Book Catering</button>
+                <button onclick="selectService('Joyous Journeys', 'Wedding Halls Rental', 2500)">Book Wedding Hall</button>
+                <button onclick="selectService('Joyous Journeys', 'Photography', 1600)">Book Photography</button>
+                <button onclick="selectService('Joyous Journeys', 'Musical and Dance Shows', 2300)">Book Musical and Dance Shows</button>
+            </div>
+        </div>
+
+        <!-- Organisation 3 -->
+        <div class="organisation">
+            <h2 onclick="toggleDetails('org3-details')">Elegant Weddings Pro</h2>
+            <div id="org3-details" class="details">
+                <h3>Catering Service</h3>
+                <p>Cost: $1200</p>
+                <h3>Wedding Halls Rental</h3>
+                <p>Cost: $3200</p>
+                <p>Location: Anna Nagar</p>
+                <h3>Photography</h3>
+                <p>Cost: $1700</p>
+                <h3>Musical and Dance Shows</h3>
+                <p>Cost: $2200</p>
+                <button onclick="selectService('Elegant Weddings Pro', 'Catering', 1200)">Book Catering</button>
+                <button onclick="selectService('Elegant Weddings Pro', 'Wedding Halls Rental', 3200)">Book Wedding Hall</button>
+                <button onclick="selectService('Elegant Weddings Pro', 'Photography', 1700)">Book Photography</button>
+                <button onclick="selectService('Elegant Weddings Pro', 'Musical and Dance Shows', 2200)">Book Musical and Dance Shows</button>
+            </div>
+        </div>
+
+        <!-- Organisation 4 -->
+        <div class="organisation">
+            <h2 onclick="toggleDetails('org4-details')">Wedding Wonders</h2>
+            <div id="org4-details" class="details">
+                <h3>Catering Service</h3>
+                <p>Cost: $2300</p>
+                <h3>Wedding Halls Rental</h3>
+                <p>Cost: $3600</p>
+                <p>Location: Vellore</p>
+                <h3>Photography</h3>
+                <p>Cost: $1000</p>
+                <h3>Musical and Dance Shows</h3>
+                <p>Cost: $2000</p>
+                <button onclick="selectService('Wedding Wonders', 'Catering', 2300)">Book Catering</button>
+                <button onclick="selectService('Wedding Wonders', 'Wedding Halls Rental', 3600)">Book Wedding Hall</button>
+                <button onclick="selectService('Wedding Wonders', 'Photography', 1000)">Book Photography</button>
+                <button onclick="selectService('Wedding Wonders', 'Musical and Dance Shows', 2000)">Book Musical and Dance Shows</button>
+            </div>
+        </div>
+
+        <!-- Organisation 5 -->
+        <div class="organisation">
+            <h2 onclick="toggleDetails('org5-details')">Everlasting Moments</h2>
+            <div id="org5-details" class="details">
+                <h3>Catering Service</h3>
+                <p>Cost: $1100</p>
+                <h3>Wedding Halls Rental</h3>
+                <p>Cost: $1000</p>
+                <p>Location: Ambattur</p>
+                <h3>Photography</h3>
+                    <p>Cost: $900</p>
+                    <h3>Musical and Dance Shows</h3>
+                    <p>Cost: $1800</p>
+                    <button onclick="selectService('Everlasting Moments', 'Catering', 1100)">Book Catering</button>
+                    <button onclick="selectService('Everlasting Moments', 'Wedding Halls Rental', 1000)">Book Wedding Hall</button>
+                    <button onclick="selectService('Everlasting Moments', 'Photography', 900)">Book Photography</button>
+                    <button onclick="selectService('Everlasting Moments', 'Musical and Dance Shows', 1800)">Book Musical and Dance Shows</button>
+                </div>
+            </div>
+    
+            <!-- Booking Form -->
+            <div id="booking-form">
+                <h2>Your Booking</h2>
+                <ul id="selected-services"></ul>
+                <div id="total-cost"></div>
+                <form onsubmit="submitBooking(); return false;">
+                    <label for="name">Wedding Theme:</label>
+                    <input type="text" id="name" name="name" required>
+    
+                    <label for="wedding-date">Wedding Date:</label>
+                    <input type="date" id="wedding-date" name="wedding-date" required>
+    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+    
+                    <label for="attendees">Number of Guests:</label>
+                    <input type="number" id="attendees" name="attendees" required>
+    
+                    <button type="submit">Submit Booking</button>
+                    <!--<button onclick ="alert('Successfully submitted!')">Submit</button>-->
+                </form>
+            </div>
+        </div>
+    
+        <script>
+            let selectedServices = [];
+            let totalCost = 0;
+    
+            function toggleDetails(id) {
+                const details = document.getElementById(id);
+                if (details.classList.contains('show')) {
+                    details.classList.remove('show');
+                } else {
+                    details.classList.add('show');
+                }
+            }
+    
+            function selectService(org, service, cost) {
+                selectedServices.push({ org, service, cost });
+                totalCost += cost;
+                updateSelectedServices();
+            }
+    
+            function updateSelectedServices() {
+                const servicesList = document.getElementById('selected-services');
+                const totalCostDiv = document.getElementById('total-cost');
+                servicesList.innerHTML = '';
+                selectedServices.forEach(service => {
+                    const li = document.createElement('li');
+                    li.textContent = `${service.service} from ${service.org} - $${service.cost}`;
+                    servicesList.appendChild(li);
+                });
+                totalCostDiv.textContent = `Total Cost: $${totalCost}`;
+            }
+    
+            function submitBooking() {
+                const name = document.getElementById('name').value;
+                const weddingDate = document.getElementById('wedding-date').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const attendees = document.getElementById('attendees').value;
+    
+                const bookingDetails = {
+                    name,
+                    weddingDate,
+                    email,
+                    phone,
+                    attendees,
+                    selectedServices,
+                    totalCost
+                };
+    
+                console.log("Booking Submitted:", bookingDetails);
+                alert("Booking successfully submitted!");
+                resetForm();
+            }
+    
+            function resetForm() {
+                selectedServices = [];
+                totalCost = 0;
+                document.getElementById('selected-services').innerHTML = '';
+                document.getElementById('total-cost').textContent = '';
+                document.querySelector('form').reset();
+            }
+        </script>
+    </body>
+    </html>
+    
